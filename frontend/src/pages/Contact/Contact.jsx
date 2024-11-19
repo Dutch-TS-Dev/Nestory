@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Contact = () => {
-    return (
+const Contact = () => = (
         <>
             <h1>Contact us</h1>
             <form>
@@ -22,6 +21,5 @@ const Contact = () => {
             <Link to={"/"}>Gehen Sie zurück auf die Startseite</Link>
         </>
     );
-};
 
 export default Contact;
