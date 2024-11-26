@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+  --colorSecondary: #ffb128;
+  --colorPrimary: #0b3954;
+  --colorTertiary: #ee6352;
+  --pageBannerBGC: #b4b4a8;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Sora", sans-serif;
+  color: var(--colorPrimary);
+}
+
+@media (min-width: 768px) {
+  body h2 {
+    font-size: 2.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  body h2 {
+    font-size: 3.2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  body h2 {
+    font-size: 4rem;
+  }
+}
+
+.number {
+  @apply absolute -top-4 -right-4 bg-colorTertiary text-white w-7 h-7 rounded-full flex items-center justify-center text-[11px];
+  /* text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.6); */
+}
+
+html {
+  scroll-behavior: smooth;
+}

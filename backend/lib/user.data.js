@@ -1,0 +1,42 @@
+export const users = [
+  {
+    firstName: "John",
+    lastName: "Doe",
+    email: "john.doe@example.com",
+    password: "1234",
+    rememberMe: false,
+    isAdmin: true,
+  },
+  {
+    firstName: "Jane",
+    lastName: "Smith",
+    email: "jane.smith@example.com",
+    password: "5678",
+    rememberMe: true,
+    isAdmin: false,
+  },
+  {
+    firstName: "Mark",
+    lastName: "Johnson",
+    email: "mark.johnson@example.com",
+    password: "9012",
+    rememberMe: false,
+    isAdmin: false,
+  },
+  {
+    firstName: "Emily",
+    lastName: "Davis",
+    email: "emily.davis@example.com",
+    password: "$2b$10$B1J3D.zq/OWz5iI4LT6n5u9qGJquxFgS8H9y4FGn9hAOmKGe8FVZ6",
+    rememberMe: true,
+    isAdmin: false,
+  },
+  {
+    firstName: "Michael",
+    lastName: "Brown",
+    email: "michael.brown@example.com",
+    password: "$2b$10$6L5Jt8K4Olw/oO78ZHie0O4/5Y5R9wjF5YGHvE6uE1.f5ZK7/3laa",
+    rememberMe: false,
+    isAdmin: true,
+  },
+];

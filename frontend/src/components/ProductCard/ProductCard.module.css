@@ -1,0 +1,16 @@
+.onSale::before {
+    content: var(--percentage);
+    width: 48px;
+    height: 25px;
+    background: var(--colorSecondary);
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    border-radius: 6px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    z-index: 10;
+}

@@ -1,0 +1,332 @@
+.container {
+  /* background-image: url("/images/hero/hero-pic1.webp"); */
+
+  /* background-image: url("/images/hero/hero-pic1.webp"),
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); */
+
+  display: flex;
+  justify-content: space-between;
+  /* justify-content: flex-start; */
+  align-items: center;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  /* width: 100%;
+  max-width: 800px; */
+  padding: 40px;
+  /* margin: 0 auto; */
+  max-width: 100%;
+}
+.container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/images/hero/hero-pic1.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px);
+  z-index: -1;
+}
+.formContainer {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 1px;
+  padding-right: 1px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: -150px;
+  border-radius: 20px;
+}
+
+.imageContainer {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.imageContainer img {
+  filter: brightness(0.8);
+  max-width: 100%; /*good for our responsive*/
+  height: auto;
+}
+.container h2 {
+  margin-bottom: 20px;
+  margin-top: -5px;
+  font-size: 2.5rem;
+}
+
+.container input[type="email"],
+.container input[type="password"],
+.container input[type="text"] {
+  width: 350px;
+  height: 40px;
+  padding: 10px 10px 10px 30px;
+  margin: 10px 0;
+  border: none;
+  /* border-radius: 23px; */
+  border-radius: 3px;
+  background-color: #f1f1f1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.container input[type="email"]:focus,
+.container input[type="password"]:focus,
+.container input[type="text"]:focus {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: white;
+}
+
+.inputContainer {
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.inputContainer .icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  /* color: #999; */
+  color: #0c3b57ab;
+}
+
+/* .container:focus-within .icon {
+  color: var(--colorPrimary);
+} */
+.container input[type="text"]:focus + .icon {
+  color: var(--colorPrimary);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container .signInButton {
+  width: 350px;
+  height: 40px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 4px;
+  margin-bottom: 15px;
+  /* margin: 8px 0; */
+  outline: none;
+  transition: all 0.15s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--colorSecondary);
+  border-radius: 23px;
+}
+
+.container .signInButton:hover {
+  outline: none;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.container .signInButton:focus {
+  background-color: var(--colorPrimary);
+}
+
+.container .remember {
+  /* transform: translateY(-2px); */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px 20px 20px;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+.container a {
+  color: var(--colorPrimary);
+  text-decoration: none;
+  font-size: 14px;
+}
+.container a:hover {
+  color: var(--colorSecondary);
+  text-decoration: underline;
+}
+
+/* this is our toggle switch style button for remember me*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 22px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 17px;
+  width: 17px;
+  left: 4px;
+  bottom: 3px;
+
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: var(--colorPrimary);
+}
+input:checked + .slider:before {
+  transform: translateX(23px);
+}
+
+.socialButtons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+  gap: 20px;
+  border-bottom: 1px solid #999;
+  padding-bottom: 30px;
+}
+
+.buttonGithub,
+.buttonGoogle {
+  background-color: var(--colorPrimary);
+  padding: 8px 13px;
+  font-size: 15px;
+  height: 38px;
+  color: white;
+  border: none;
+  border-radius: 50px 50px 50px 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.buttonGithub i,
+.buttonGoogle i {
+  margin-right: 10px;
+}
+
+.buttonGoogle:hover,
+.buttonGithub:hover {
+  transform: translateY(-2px);
+  outline: none;
+  border: none;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.changeButton {
+  /* margin-bottom: -10px; */
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.eyeIcon1 {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #0c3b57ab;
+}
+
+.eyeIcon2 {
+  position: absolute;
+  right: 50px;
+  top: 60%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #0c3b57ab;
+}
+
+.eyeIcon3 {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #0c3b57ab;
+}
+
+/* .error {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px 20px;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  font-weight: bold;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+} */
+
+@media (max-width: 1000px) {
+  .container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .formContainer {
+    margin-top: 100px;
+  }
+
+  .container input[type="email"],
+  .container input[type="password"],
+  .container input[type="text"],
+  .container .signInButton {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .formContainer {
+    max-width: 100%;
+    padding: 20px;
+    margin-top: 40px;
+  }
+
+  .container input[type="email"],
+  .container input[type="password"],
+  .container input[type="text"],
+  .container .signInButton {
+    width: 100%;
+  }
+
+  .imageContainer {
+    display: none;
+  }
+}
