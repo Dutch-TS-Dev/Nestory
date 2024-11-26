@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-import dotenv from "dotenv";
-//import colors from "colors";
-dotenv.config();
+// import dotenv from "dotenv";
+// //import colors from "colors";
+// dotenv.config();
 
 const mongoUser = process.env.MONGO_USER;
 const mongoPassword = process.env.MONGO_PASSWORD;

@@ -18,6 +18,9 @@ import paymentRouter from "./routes/payment.route.js";
 import orderRouter from "./routes/order.route.js";
 import reviewRouter from "./routes/reviewRoutes.js";
 
+import dotenv from "dotenv";
+dotenv.config();
+
 await connect();
 const app = express();
 
