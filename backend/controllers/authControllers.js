@@ -85,7 +85,8 @@ export const registerUser = async (req, res) => {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
             maxAge: 1 * 60 * 60 * 1000,
-            sameSite: "strict",
+            // sameSite: "strict",
+            sameSite: "None", // 跨站请求时也要带上 cookie
         });
 
         // res.cookie("rememberMe", rememberMe, {
@@ -156,14 +157,16 @@ export const loginUser = async (req, res) => {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
             maxAge: 1 * 60 * 60 * 1000,
-            sameSite: "strict",
+            // sameSite: "strict",
+            sameSite: "None", // 跨站请求时也要带上 cookie
         });
 
         res.cookie("refreshToken", refreshToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
             maxAge: 5 * 60 * 60 * 1000,
-            sameSite: "strict",
+            // sameSite: "strict",
+            sameSite: "None", // 跨站请求时也要带上 cookie
         });
 
         console.log("Login successful");
@@ -228,7 +231,8 @@ export const refreshToken = async (req, res) => {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
             maxAge: 1 * 60 * 60 * 1000,
-            sameSite: "strict",
+            // sameSite: "strict",
+            sameSite: "None", // 跨站请求时也要带上 cooki
         });
 
         console.log("Token refreshed successfully");
