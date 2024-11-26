@@ -2,8 +2,8 @@ import { stripe } from "../../lib/stripe.js";
 import Cart from "../../models/Cart.js";
 import Order from "../../models/Order.js";
 import Address from "../../models/Address.js";
-// import dotenv from "dotenv";
-// dotenv.config();
+import dotenv from "dotenv";
+dotenv.config();
 
 // console.log(process.env.CLIENT_URL);
 

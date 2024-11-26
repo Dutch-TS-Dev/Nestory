@@ -1,6 +1,6 @@
 import { verifyJwt } from "../controllers/authControllers.js";
-// import dotenv from "dotenv";
-// dotenv.config();
+import dotenv from "dotenv";
+dotenv.config();
 
 //ovaa funkcija ima uloga samo da go zacuva user id
 //**funcionira 1*/

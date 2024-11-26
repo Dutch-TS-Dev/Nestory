@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import connect from "./lib/db.js";
 import cors from "cors";
@@ -17,9 +20,6 @@ import userRouter from "./routes/userRouter.js";
 import paymentRouter from "./routes/payment.route.js";
 import orderRouter from "./routes/order.route.js";
 import reviewRouter from "./routes/reviewRoutes.js";
-
-import dotenv from "dotenv";
-dotenv.config();
 
 await connect();
 const app = express();
