@@ -1,3 +1,4 @@
+const apiUrl = import.meta.env.VITE_API_URL;
 export const updateUserAddress = async (/* addressId, */ newAddressData) => {
     /* console.log(
         "patch fetch addrssId, newAddressData",
@@ -7,7 +8,7 @@ export const updateUserAddress = async (/* addressId, */ newAddressData) => {
     try {
         const response = await fetch(
             //`http://localhost:3000/address/${addressId}`,
-            `http://localhost:3000/address`,
+            `${apiUrl}/address`,
             {
                 method: "PATCH",
                 headers: {

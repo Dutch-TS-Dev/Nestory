@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const DashboardUpdateUser = () => {
     const { state } = useLocation();
 
@@ -32,7 +34,7 @@ const DashboardUpdateUser = () => {
 
         try {
             const response = await fetch(
-                `http://localhost:3000/account/user/admin/${userId}`,
+                `${apiUrl}/account/user/admin/${userId}`,
                 {
                     method: "PATCH",
                     headers: { "Content-Type": "application/json" },

@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { Package } from "lucide-react";
 
+const apiUrl = import.meta.env.VITE_API_URL;
 const DashboardAddProduct = () => {
     const {
         register,
@@ -30,15 +31,12 @@ const DashboardAddProduct = () => {
 
         // Post Form Data to API
         try {
-            const response = await fetch(
-                "http://localhost:3000/api/products/admin",
-                {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(payload),
-                    credentials: "include",
-                }
-            );
+            const response = await fetch(`${apiUrl}/api/products/admin`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+                credentials: "include",
+            });
 
             if (response.ok) {
                 // console.log("Product added successfully");

@@ -6,13 +6,15 @@ import { Link } from "react-router-dom";
 import CheckOut from "../../components/CheckOut/CheckOut.jsx";
 import SubscribeBox from "../../components/UserProfile/SubscribeBox/SubscribeBox.jsx";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const ShoppingCart = () => {
     const { cartItems, setCartItems, user } = useContext(AppContext);
     const [totalPrice, setTotalPrice] = useState(0);
 
     const fetchCartItems = async () => {
         try {
-            const response = await fetch("http://localhost:3000/cart", {
+            const response = await fetch(`${apiUrl}/cart`, {
                 method: "GET",
                 credentials: "include",
             });
@@ -40,13 +42,10 @@ const ShoppingCart = () => {
 
     const deleteCartItem = async (productId) => {
         try {
-            const response = await fetch(
-                `http://localhost:3000/cart/${productId}`,
-                {
-                    method: "DELETE",
-                    credentials: "include", // Cookie mit Token senden
-                }
-            );
+            const response = await fetch(`${apiUrl}/cart/${productId}`, {
+                method: "DELETE",
+                credentials: "include", // Cookie mit Token senden
+            });
 
             if (!response.ok) {
                 throw new Error("Failed to delete cart item");
@@ -64,17 +63,14 @@ const ShoppingCart = () => {
     const updateCartItem = async (productId, quantity, color = "black") => {
         try {
             // console.log("pred fetch");
-            const response = await fetch(
-                `http://localhost:3000/cart/${productId}`,
-                {
-                    method: "PATCH",
-                    credentials: "include", // Cookie mit JWT senden
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ quantity, color }),
-                }
-            );
+            const response = await fetch(`${apiUrl}/cart/${productId}`, {
+                method: "PATCH",
+                credentials: "include", // Cookie mit JWT senden
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ quantity, color }),
+            });
             // console.log("posle fetch");
 
             if (!response.ok) {

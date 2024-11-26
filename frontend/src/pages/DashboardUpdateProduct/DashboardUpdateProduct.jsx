@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 
+const apiUrl = import.meta.env.VITE_API_URL;
 const DashboardUpdateProduct = () => {
     const { state } = useLocation();
     const { product } = state;
@@ -46,7 +47,7 @@ const DashboardUpdateProduct = () => {
 
         try {
             const response = await fetch(
-                `http://localhost:3000/api/products/admin/${product._id}`,
+                `${apiUrl}/api/products/admin/${product._id}`,
                 {
                     method: "PATCH",
                     headers: { "Content-Type": "application/json" },

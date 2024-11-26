@@ -7,16 +7,13 @@ import { ImUserTie } from "react-icons/im";
 import Pagination from "../../components/Pagination/Pagination";
 import { debounce } from "lodash";
 
-// import Pagination from "./components/Pagination";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 export const fetchUsers = async () => {
     try {
-        const response = await fetch(
-            "http://localhost:3000/account/user/admin",
-            {
-                credentials: "include",
-            }
-        );
+        const response = await fetch(`${apiUrl}/account/user/admin`, {
+            credentials: "include",
+        });
         const data = await response.json();
         return data;
     } catch (error) {
@@ -92,7 +89,7 @@ const DashboardUsers = () => {
 
     const handleDelete = async (id) => {
         try {
-            await fetch(`http://localhost:3000/account/user/admin/${id}`, {
+            await fetch(`${apiUrl}/account/user/admin/${id}`, {
                 method: "DELETE",
                 credentials: "include",
             });

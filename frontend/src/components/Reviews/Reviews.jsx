@@ -34,12 +34,12 @@ const ReviewSection = ({ product }) => {
             [name]: name === "rating" ? Number(value) : value,
         }));
     };
-
+    const apiUrl = import.meta.env.VITE_API_URL;
     useEffect(() => {
         const fetchReviews = async () => {
             try {
                 const response = await fetch(
-                    `http://localhost:3000/api/review/${product._id}`,
+                    `${apiUrl}/api/review/${product._id}`,
                     {
                         method: "GET",
                     }
@@ -55,18 +55,6 @@ const ReviewSection = ({ product }) => {
         fetchReviews();
     }, [product._id]);
 
-    // const handleSubmit = (e) => {
-    //   e.preventDefault();
-    //   const newReviewEntry = {
-    //     id: allReviews.length + 1, // id generieren
-    //     ...newReview,
-    //     avatar: "/images/avatars/defaultAvatar.webp", // user.photo
-    //     date: new Date().toLocaleDateString(),
-    //   };
-    //   setAllReviews((prev) => [...prev, newReviewEntry]);
-    //   setNewReview({ name: "", rating: 0, text: "" }); // for form reset
-    // };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         const newReviewEntry = {
@@ -77,8 +65,8 @@ const ReviewSection = ({ product }) => {
 
         try {
             const response = await fetch(
-                `http://localhost:3000/api/review/${product._id}`,
-                // "http://localhost:3000/api/review/:productId",
+                `${apiUrl}/api/review/${product._id}`,
+
                 {
                     method: "POST",
                     headers: {

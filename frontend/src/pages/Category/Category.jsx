@@ -16,6 +16,8 @@ const Category = () => {
     const limit = 3;
     const { categoryName } = useParams();
 
+    const apiUrl = import.meta.env.VITE_API_URL;
+
     useEffect(() => {
         // 每次切换category时重置到第一页
         setCurrentPage(1);
@@ -25,7 +27,7 @@ const Category = () => {
         const fetchProducts = async () => {
             try {
                 const response = await fetch(
-                    `http://localhost:3000/api/products/?sort=${sortOption}&page=${currentPage}&limit=${limit}&category=${categoryName}`
+                    `${apiUrl}/api/products/?sort=${sortOption}&page=${currentPage}&limit=${limit}&category=${categoryName}`
                 );
                 const data = await response.json();
                 setProducts(data.products);

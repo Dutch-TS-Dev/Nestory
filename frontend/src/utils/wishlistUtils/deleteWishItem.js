@@ -1,7 +1,8 @@
+const apiUrl = import.meta.env.VITE_API_URL;
 export const deleteWishItem = async (id) => {
     //console.log("item to del: ", wishlist.find((i) => i._id === id).name, id);
     try {
-        const response = await fetch(`http://localhost:3000/wishlist/${id}`, {
+        const response = await fetch(`${apiUrl}/wishlist/${id}`, {
             method: "DELETE",
             credentials: "include",
         });

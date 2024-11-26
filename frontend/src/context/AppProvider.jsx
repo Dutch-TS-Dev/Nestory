@@ -5,7 +5,7 @@ import { fetchWishlist } from "../utils/wishlistUtils/fetchWishList";
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export const AppContext = React.createContext();
@@ -31,8 +31,10 @@ const AppProvider = ({ children }) => {
 
     const navigate = useNavigate();
 
+    const apiUrl = import.meta.env.VITE_API_URL;
+
     const fetchUser = async () => {
-        const res = await fetch("http://localhost:3000/api/checkUser", {
+        const res = await fetch(`${apiUrl}/api/checkUser`, {
             credentials: "include",
         });
 
@@ -60,7 +62,7 @@ const AppProvider = ({ children }) => {
 
     useEffect(() => {
         const fetchCart = async () => {
-            const response = await fetch("http://localhost:3000/cart", {
+            const response = await fetch(`${apiUrl}/cart`, {
                 credentials: "include",
             });
             if (!response.ok) {
@@ -101,7 +103,7 @@ const AppProvider = ({ children }) => {
 
     const handleLogout = async () => {
         try {
-            await fetch("http://localhost:3000/api/users/logout", {
+            await fetch(`${apiUrl}/api/users/logout`, {
                 method: "POST",
                 credentials: "include",
             });

@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
+const apiUrl = import.meta.env.VITE_API_URL;
 const DashboardAddUser = () => {
     const {
         register,
@@ -13,15 +14,12 @@ const DashboardAddUser = () => {
         // console.log("Form Data:", data);
 
         try {
-            const response = await fetch(
-                "http://localhost:3000/account/user/admin",
-                {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(data),
-                    credentials: "include",
-                }
-            );
+            const response = await fetch(`${apiUrl}/account/user/admin`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+                credentials: "include",
+            });
 
             if (response.ok) {
                 // console.log("User added successfully");

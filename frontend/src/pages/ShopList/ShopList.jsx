@@ -4,6 +4,8 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 import { AppContext } from "../../context/AppProvider";
 import Pagination from "../../components/Pagination/Pagination";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const ShopList = () => {
     const [products, setProducts] = useState([]);
     const { sortOption } = useContext(AppContext);
@@ -18,7 +20,7 @@ const ShopList = () => {
         const fetchProducts = async () => {
             try {
                 const response = await fetch(
-                    `http://localhost:3000/api/products/?sort=${sortOption}&page=${currentPage}&limit=${limit}`
+                    `${apiUrl}/api/products/?sort=${sortOption}&page=${currentPage}&limit=${limit}`
                 );
                 const data = await response.json();
 

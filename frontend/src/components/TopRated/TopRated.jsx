@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 
+const apiUrl = import.meta.env.VITE_API_URL;
 const TopRated = () => {
     const [products, setProducts] = useState([]);
 
@@ -8,7 +9,7 @@ const TopRated = () => {
         const fetchDeals = async () => {
             try {
                 const response = await fetch(
-                    "http://localhost:3000/api/products/?type=topRated"
+                    `${apiUrl}/api/products/?type=topRated`
                 );
                 const data = await response.json();
                 setProducts(data.products);

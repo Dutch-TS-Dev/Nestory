@@ -7,14 +7,13 @@ import Pagination from "../../components/Pagination/Pagination";
 
 import debounce from "lodash/debounce";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export const fetchProducts = async () => {
     try {
-        const response = await fetch(
-            "http://localhost:3000/api/products/admin",
-            {
-                credentials: "include",
-            }
-        );
+        const response = await fetch(`${apiUrl}/api/products/admin`, {
+            credentials: "include",
+        });
         const data = await response.json();
 
         return data;
@@ -92,7 +91,7 @@ const DashboardProducts = () => {
 
     const handleDelete = async (id) => {
         try {
-            await fetch(`http://localhost:3000/api/products/admin/${id}`, {
+            await fetch(`${apiUrl}/api/products/admin/${id}`, {
                 method: "DELETE",
                 credentials: "include",
             });

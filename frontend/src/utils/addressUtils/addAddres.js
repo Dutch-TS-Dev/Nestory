@@ -1,7 +1,8 @@
+const apiUrl = import.meta.env.VITE_API_URL;
 export const addAddress = async (newAddressData) => {
     // console.log("addAddress fetch newAddressData", newAddressData);
     try {
-        const response = await fetch("http://localhost:3000/address", {
+        const response = await fetch(`${apiUrl}/address`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

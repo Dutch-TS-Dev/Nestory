@@ -1,6 +1,7 @@
+const apiUrl = import.meta.env.VITE_API_URL;
 export const addToWishlist = async (id) => {
     try {
-        const response = await fetch(`http://localhost:3000/wishlist/${id}`, {
+        const response = await fetch(`${apiUrl}/wishlist/${id}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

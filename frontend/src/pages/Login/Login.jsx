@@ -14,6 +14,8 @@ import { AppContext } from "../../context/AppProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const App = () => {
     const {
         register,
@@ -55,8 +57,8 @@ const App = () => {
         // console.log("Data being sent:", data);
         try {
             const endpoint = isSignUp
-                ? "http://localhost:3000/api/users/register"
-                : "http://localhost:3000/api/users/login";
+                ? `${apiUrl}/api/users/register`
+                : `${apiUrl}/api/users/login`;
             const response = await fetch(endpoint, {
                 method: "POST",
                 headers: {

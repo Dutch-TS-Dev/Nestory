@@ -17,11 +17,12 @@ const CheckOut = ({ totalPrice }) => {
     const [addressData, setAddressData] = useState({});
     const [noAddress, setNoAddress] = useState(true);
 
+    const apiUrl = import.meta.env.VITE_API_URL;
     const handlePayment = async () => {
         try {
             const stripe = await stripePromise;
             const response = await fetch(
-                "http://localhost:3000/api/payments/create-checkout-session",
+                `${apiUrl}/api/payments/create-checkout-session`,
                 {
                     method: "POST",
                     headers: {
@@ -45,7 +46,7 @@ const CheckOut = ({ totalPrice }) => {
     };
 
     const handleAddressChange = async () => {
-        const res = await fetch(`http://localhost:3000/address`, {
+        const res = await fetch(`${apiUrl}/address`, {
             credentials: "include",
         });
         if (res.status === 404) {

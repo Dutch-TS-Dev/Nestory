@@ -1,6 +1,7 @@
+const apiUrl = import.meta.env.VITE_API_URL;
 export const fetchUsersOrders = async () => {
     try {
-        const response = await fetch(`http://localhost:3000/account/orders`, {
+        const response = await fetch(`${apiUrl}/account/orders`, {
             credentials: "include",
         });
         if (!response.ok) {

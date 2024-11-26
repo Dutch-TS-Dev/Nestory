@@ -8,6 +8,7 @@ import { AppContext } from "../../context/AppProvider.jsx";
 import { fetchWishlist } from "../../utils/wishlistUtils/fetchWishList.js";
 import { deleteWishItem } from "../../utils/wishlistUtils/deleteWishItem.js";
 
+const apiUrl = import.meta.env.VITE_API_URL;
 const WishlistItem = ({ wishItem }) => {
     const { setWishlist, setCartItems, bagIconRef } = useContext(AppContext);
 
@@ -17,15 +18,12 @@ const WishlistItem = ({ wishItem }) => {
 
     const addToCart = async () => {
         try {
-            const response = await fetch(
-                `http://localhost:3000/cart/${wishItem._id}`,
-                {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ quantity: 1, color: "black" }),
-                    credentials: "include",
-                }
-            );
+            const response = await fetch(`${apiUrl}/cart/${wishItem._id}`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ quantity: 1, color: "black" }),
+                credentials: "include",
+            });
 
             const data = await response.json();
             if (response.ok) {

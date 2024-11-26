@@ -1,6 +1,7 @@
+const apiUrl = import.meta.env.VITE_API_URL;
 export const getUserAddress = async () => {
     try {
-        const response = await fetch(`http://localhost:3000/address`, {
+        const response = await fetch(`${apiUrl}/address`, {
             credentials: "include",
         });
         if (!response.ok) {

@@ -1,6 +1,7 @@
+const apiUrl = import.meta.env.VITE_API_URL;
 export const fetchWishlist = async () => {
     try {
-        const response = await fetch("http://localhost:3000/wishlist", {
+        const response = await fetch(`${apiUrl}/wishlist`, {
             method: "GET",
             credentials: "include",
         });

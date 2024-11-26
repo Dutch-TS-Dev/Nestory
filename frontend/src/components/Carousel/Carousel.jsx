@@ -13,6 +13,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 
+const apiUrl = import.meta.env.VITE_API_URL;
 const Carousel = () => {
     const [carouselProducts, setCarouselProducts] = useState([]);
     // console.log("probe1");
@@ -22,7 +23,7 @@ const Carousel = () => {
             // console.log("probe");
             try {
                 const response = await fetch(
-                    "http://localhost:3000/api/products/?type=topRated"
+                    `${apiUrl}/api/products/?type=topRated`
                 );
                 const data = await response.json();
                 // console.log("products in carousel", data);

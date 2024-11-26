@@ -4,6 +4,7 @@ import ProductCard from "../ProductCard/ProductCard";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Timer from "../Timer/Timer";
 
+const apiUrl = import.meta.env.VITE_API_URL;
 const HotDeals = ({ cardWidth, visibleCards }) => {
     const [products, setProducts] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(1);
@@ -25,7 +26,7 @@ const HotDeals = ({ cardWidth, visibleCards }) => {
         const fetchDeals = async () => {
             try {
                 const response = await fetch(
-                    "http://localhost:3000/api/products/?type=deals"
+                    `${apiUrl}/api/products/?type=deals`
                 );
                 const data = await response.json();
                 setProducts(data.products);

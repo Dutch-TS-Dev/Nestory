@@ -1,9 +1,10 @@
 import { BadgeDollarSign } from "lucide-react";
 import { useEffect, useState } from "react";
 
+const apiUrl = import.meta.env.VITE_API_URL;
 export const fetchTransactions = async () => {
     try {
-        const response = await fetch("http://localhost:3000/api/order/admin", {
+        const response = await fetch(`${apiUrl}/api/order/admin`, {
             credentials: "include",
         });
         const data = await response.json();

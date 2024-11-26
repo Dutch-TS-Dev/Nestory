@@ -1,20 +1,22 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import SearchItems from "../../components/SearchItem/SearchItems";
 import { AppContext } from "../../context/AppProvider";
+
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const SearchList = () => {
     const [searchResults, setSearchResults] = useState([]);
     const [loading, setLoading] = useState(true);
-    const location = useLocation();
+    // const location = useLocation();
     const { searchKeyword } = useContext(AppContext);
 
     useEffect(() => {
         const fetchSearchResults = async () => {
             setLoading(true);
             try {
-                //const response = await fetch(`http://localhost:3000/api/products/search/?query=beds`);
                 const response = await fetch(
-                    `http://localhost:3000/api/products/search/?query=${searchKeyword}`
+                    `${apiUrl}/api/products/search/?query=${searchKeyword}`
                 );
                 const data = await response.json();
                 // console.log(data);

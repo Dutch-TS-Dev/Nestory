@@ -26,12 +26,14 @@ const AddressForm = ({
         }
     }, [addressData, setValue]);
 
+    const apiUrl = import.meta.env.VITE_API_URL; // 访问 VITE_API_URL 环境变量
+
     const onSubmit = (data) => {
         const method =
             // addressData && Object.keys(addressData).length > 0
             noAddress ? "POST" : "PATCH";
 
-        const res = fetch(`http://localhost:3000/address`, {
+        const res = fetch(`${apiUrl}/address`, {
             method: method,
             headers: {
                 "Content-Type": "application/json",

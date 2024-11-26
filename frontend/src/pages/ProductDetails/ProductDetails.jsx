@@ -23,6 +23,8 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const getRandomWarranty = () => {
     const warrantyOptions = [2, 3, 5];
     const randomIndex = Math.floor(Math.random() * warrantyOptions.length);
@@ -43,15 +45,12 @@ const Furniture = () => {
 
 async function fetchProductById(productId) {
     try {
-        const response = await fetch(
-            `http://localhost:3000/api/products/${productId}`,
-            {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            }
-        );
+        const response = await fetch(`${apiUrl}/api/products/${productId}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
 
         if (!response.ok) {
             throw new Error(`Error: ${response.status} ${response.statusText}`);
@@ -134,20 +133,17 @@ const ProductDetails = () => {
                 toast.warn("Please login to add to cart");
                 return;
             }
-            const response = await fetch(
-                `http://localhost:3000/cart/${product._id}`,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        quantity: quantityProductDetails,
-                        color: "black",
-                    }),
-                    credentials: "include",
-                }
-            );
+            const response = await fetch(`${apiUrl}/cart/${product._id}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    quantity: quantityProductDetails,
+                    color: "black",
+                }),
+                credentials: "include",
+            });
 
             const data = await response.json();
             // console.log("fetched data:", data);
