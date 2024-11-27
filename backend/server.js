@@ -24,46 +24,31 @@ import reviewRouter from "./routes/reviewRoutes.js";
 await connect();
 const app = express();
 
-// Add headers before the routes are defined
 app.use((req, res, next) => {
-  // Website you wish to allow to connect
-  const allowedOrigins = [
-    "http://localhost:5173",
-    "https://nestory-six.vercel.app/",
-    "http://localhost:8888", // Additional allowed origin
-  ];
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
-  }
+  // Allow a single origin
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://nestory-six.vercel.app/"
+  );
 
-  // Request methods you wish to allow
+  // Allow all HTTP methods
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+    "GET, POST, PUT, PATCH, DELETE, OPTIONS"
   );
 
-  // Request headers you wish to allow
+  // Allow all headers
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "X-Requested-With,Content-Type,Authorization"
+    "Content-Type, Authorization, X-Requested-With"
   );
 
-  // Allow credentials (cookies, etc.)
-  res.setHeader("Access-Control-Allow-Credentials", true);
+  // Allow credentials
+  res.setHeader("Access-Control-Allow-Credentials", "true");
 
-  // Pass to next middleware
+  // Move to the next middleware
   next();
 });
-
-// Using the cors middleware for additional flexibility
-const corsOptions = {
-  origin: ["http://localhost:5173", "https://nestory-six.vercel.app/"],
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-};
-app.use(cors(corsOptions));
 
 // app.use(cors());
 
