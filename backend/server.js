@@ -58,6 +58,7 @@ const corsOptions = {
     allowedHeaders: ["Content-Type", "Authorization"], // 允许的请求头
 };
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); // 响应所有预检请求
 
 // app.use(cors());
 
