@@ -23,30 +23,21 @@ import reviewRouter from "./routes/reviewRoutes.js";
 
 await connect();
 const app = express();
-
 app.use((req, res, next) => {
-  // Allow a single origin
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://nestory-9h1dm0442-teamama.vercel.app'/"
-  );
+  const origin = req.headers.origin;
 
-  // Allow all HTTP methods
+  // Allow all origins dynamically
+  res.setHeader("Access-Control-Allow-Origin", origin);
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+    "GET, POST, PUT, DELETE, OPTIONS"
   );
-
-  // Allow all headers
   res.setHeader(
     "Access-Control-Allow-Headers",
     "Content-Type, Authorization, X-Requested-With"
   );
-
-  // Allow credentials
   res.setHeader("Access-Control-Allow-Credentials", "true");
 
-  // Move to the next middleware
   next();
 });
 
