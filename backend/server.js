@@ -24,31 +24,29 @@ import reviewRouter from "./routes/reviewRoutes.js";
 await connect();
 const app = express();
 
-// CORS configuration
-const corsOptions = {
-  origin: (origin, callback) => {
-    // Dynamically allow the origin (e.g., for a UUID-based URL)
-    if (origin) {
-      callback(null, origin); // Accept the origin dynamically
-    } else {
-      callback(new Error("Not allowed by CORS")); // Reject requests with no origin (e.g., for non-browser requests)
-    }
-  },
-  credentials: true, // Allow cookies and credentials to be sent
-  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
-  allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
-};
+app.use((req, res, next) => {
+  // Allow a single origin
+  res.setHeader("Access-Control-Allow-Origin", "nestory-m7be.vercel.app");
 
-app.use(cors(corsOptions));
+  // Allow all HTTP methods
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+  );
 
-// Your routes here...
-app.get("/api/products", (req, res) => {
-  res.json({ message: "Products fetched successfully" });
+  // Allow all headers
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization, X-Requested-With"
+  );
+
+  // Allow credentials
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+
+  // Move to the next middleware
+  next();
 });
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
 // app.use(cors());
 
 app.use(express.json());

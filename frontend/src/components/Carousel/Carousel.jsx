@@ -27,9 +27,7 @@ const Carousel = () => {
 
       console.log(222);
       try {
-        const response = await fetch(url, {
-          mode: "no-cors", // Disable CORS
-        });
+        const response = await fetch(url);
         const data = await response.json();
         // console.log("products in carousel", data);
         setCarouselProducts(data.products);
