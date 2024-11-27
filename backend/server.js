@@ -28,7 +28,7 @@ app.use((req, res, next) => {
   // Allow a single origin
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://nestory-six.vercel.app/"
+    "https://nestory-9h1dm0442-teamama.vercel.app'/"
   );
 
   // Allow all HTTP methods
