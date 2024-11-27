@@ -24,10 +24,17 @@ import reviewRouter from "./routes/reviewRoutes.js";
 await connect();
 const app = express();
 
+// const corsOptions = {
+//     origin: ["http://localhost:5173", "https://nestory-frontend.vercel.app"],
+//     credentials: true,
+//     // allowedHeaders: ["Content-Type", "Authorization"], // 允许的请求头
+// };
+
 const corsOptions = {
-    origin: ["http://localhost:5173", "https://nestory-frontend.vercel.app"],
-    credentials: true,
-    // allowedHeaders: ["Content-Type", "Authorization"], // 允许的请求头
+    origin: ["http://localhost:5173", "https://nestory-frontend.vercel.app"], // Allow specific origins
+    credentials: true, // Allow cookies to be sent
+    methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed HTTP methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Specify allowed headers
 };
 
 app.use(cors(corsOptions));
