@@ -24,19 +24,45 @@ import reviewRouter from "./routes/reviewRoutes.js";
 await connect();
 const app = express();
 
-// const corsOptions = {
-//     origin: ["http://localhost:5173", "https://nestory-frontend.vercel.app"],
-//     credentials: true,
-//     // allowedHeaders: ["Content-Type", "Authorization"], // 允许的请求头
-// };
+// Add headers before the routes are defined
+app.use((req, res, next) => {
+  // Website you wish to allow to connect
+  const allowedOrigins = [
+    "http://localhost:5173",
+    "https://nestory-frontend.vercel.app",
+    "http://localhost:8888", // Additional allowed origin
+  ];
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
 
+  // Request methods you wish to allow
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+
+  // Request headers you wish to allow
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,Content-Type,Authorization"
+  );
+
+  // Allow credentials (cookies, etc.)
+  res.setHeader("Access-Control-Allow-Credentials", true);
+
+  // Pass to next middleware
+  next();
+});
+
+// Using the cors middleware for additional flexibility
 const corsOptions = {
-    origin: ["http://localhost:5173", "https://nestory-frontend.vercel.app"], // Allow specific origins
-    credentials: true, // Allow cookies to be sent
-    methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed HTTP methods
-    allowedHeaders: ["Content-Type", "Authorization"], // Specify allowed headers
+  origin: ["http://localhost:5173", "https://nestory-frontend.vercel.app"],
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 };
-
 app.use(cors(corsOptions));
 
 // app.use(cors());
@@ -59,7 +85,7 @@ app.use("/api/payments", paymentRouter);
 app.use("/api/order", orderRouter);
 app.use("/api/review", reviewRouter);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`.yellow.bold);
+  console.log(`Server is running on port ${port}`.yellow.bold);
 });
