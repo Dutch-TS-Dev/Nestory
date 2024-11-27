@@ -23,14 +23,13 @@ const Carousel = () => {
       // console.log("probe");
       //
 
+      const url = `https://6bfb-184-22-234-240.ngrok-free.app/api/products/?type=deals&_=${new Date().getTime()}`;
+
       console.log(222);
       try {
-        const response = await fetch(
-          `https://6bfb-184-22-234-240.ngrok-free.app/api/products/?type=topRated`,
-          {
-            mode: "no-cors", // Disable CORS
-          }
-        );
+        const response = await fetch(url, {
+          mode: "no-cors", // Disable CORS
+        });
         const data = await response.json();
         // console.log("products in carousel", data);
         setCarouselProducts(data.products);
