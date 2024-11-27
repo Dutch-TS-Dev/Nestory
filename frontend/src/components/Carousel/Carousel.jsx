@@ -26,7 +26,10 @@ const Carousel = () => {
       console.log(222);
       try {
         const response = await fetch(
-          `https://6bfb-184-22-234-240.ngrok-free.app/api/products/?type=topRated`
+          `https://6bfb-184-22-234-240.ngrok-free.app/api/products/?type=topRated`,
+          {
+            mode: "no-cors", // Disable CORS
+          }
         );
         const data = await response.json();
         // console.log("products in carousel", data);
