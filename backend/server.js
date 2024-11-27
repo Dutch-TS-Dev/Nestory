@@ -33,6 +33,7 @@ const corsOptions = {
         "https://nestory-frontend.vercel.app",
     ],
     credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"], // 允许的请求头
 };
 app.use(cors(corsOptions));
 
