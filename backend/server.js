@@ -29,7 +29,7 @@ app.use((req, res, next) => {
   // Website you wish to allow to connect
   const allowedOrigins = [
     "http://localhost:5173",
-    "https://nestory-frontend.vercel.app",
+    "https://nestory-six.vercel.app/",
     "http://localhost:8888", // Additional allowed origin
   ];
   const origin = req.headers.origin;
