@@ -23,24 +23,32 @@ import reviewRouter from "./routes/reviewRoutes.js";
 
 await connect();
 const app = express();
-app.use((req, res, next) => {
-  const origin = req.headers.origin;
 
-  // Allow all origins dynamically
-  res.setHeader("Access-Control-Allow-Origin", origin);
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT, DELETE, OPTIONS"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Content-Type, Authorization, X-Requested-With"
-  );
-  res.setHeader("Access-Control-Allow-Credentials", "true");
+// CORS configuration
+const corsOptions = {
+  origin: (origin, callback) => {
+    // Dynamically allow the origin (e.g., for a UUID-based URL)
+    if (origin) {
+      callback(null, origin); // Accept the origin dynamically
+    } else {
+      callback(new Error("Not allowed by CORS")); // Reject requests with no origin (e.g., for non-browser requests)
+    }
+  },
+  credentials: true, // Allow cookies and credentials to be sent
+  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
+  allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
+};
 
-  next();
+app.use(cors(corsOptions));
+
+// Your routes here...
+app.get("/api/products", (req, res) => {
+  res.json({ message: "Products fetched successfully" });
 });
 
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
 // app.use(cors());
 
 app.use(express.json());
