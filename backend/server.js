@@ -24,41 +24,13 @@ import reviewRouter from "./routes/reviewRoutes.js";
 await connect();
 const app = express();
 
-// const corsOptions = {
-//     origin: [
-//         "http://localhost:5173",
-//         "http://localhost:5174",
-//         "http://localhost:5175",
-//         "http://localhost:5177",
-//         "https://nestory-frontend.vercel.app",
-//     ],
-//     credentials: true,
-//     allowedHeaders: ["Content-Type", "Authorization"], // 允许的请求头
-// };
-
 const corsOptions = {
-    origin: function (origin, callback) {
-        // 如果没有 origin（例如来自本地请求），允许跨域
-        if (
-            !origin ||
-            [
-                "http://localhost:5173",
-                "http://localhost:5174",
-                "http://localhost:5175",
-                "http://localhost:5177",
-                "https://nestory-frontend.vercel.app",
-            ].includes(origin)
-        ) {
-            callback(null, true); // 允许跨域
-        } else {
-            callback(new Error("Not allowed by CORS")); // 不允许其他来源
-        }
-    },
-    credentials: true, // 支持带凭证的请求（如 cookies）
-    allowedHeaders: ["Content-Type", "Authorization"], // 允许的请求头
+    origin: ["http://localhost:5173", "https://nestory-frontend.vercel.app"],
+    credentials: true,
+    // allowedHeaders: ["Content-Type", "Authorization"], // 允许的请求头
 };
+
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); // 响应所有预检请求
 
 // app.use(cors());
 

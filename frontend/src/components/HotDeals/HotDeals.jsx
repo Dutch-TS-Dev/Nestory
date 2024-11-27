@@ -26,7 +26,15 @@ const HotDeals = ({ cardWidth, visibleCards }) => {
         const fetchDeals = async () => {
             try {
                 const response = await fetch(
-                    `${apiUrl}/api/products/?type=deals`
+                    `${apiUrl}/api/products/?type=deals`,
+                    {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        // body: JSON.stringify(data),
+                        credentials: "include",
+                    }
                 );
                 const data = await response.json();
                 setProducts(data.products);

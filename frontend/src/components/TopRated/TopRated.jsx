@@ -9,7 +9,15 @@ const TopRated = () => {
         const fetchDeals = async () => {
             try {
                 const response = await fetch(
-                    `${apiUrl}/api/products/?type=topRated`
+                    `${apiUrl}/api/products/?type=topRated`,
+                    {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        // body: JSON.stringify(data),
+                        credentials: "include",
+                    }
                 );
                 const data = await response.json();
                 setProducts(data.products);
